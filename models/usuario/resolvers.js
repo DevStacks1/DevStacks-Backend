@@ -14,28 +14,29 @@ const resolversUsuario = {
     },
     Mutation: {
         crearUsuario: async (parent, args) => {
+        
         const usuarioCreado = await UserModel.create({
-            nombre: args.nombre,
-            apellido: args.apellido,
-            identificacion: args.identificacion,
-            correo: args.correo,
-            rol: args.rol,
+            Name: args.Name,
+            Lastname: args.Lastname,
+            Identification: args.Identification,
+            Email: args.Email,
+            Role: args.Role,
         });
 
-        if (Object.keys(args).includes('estado')) {
-            usuarioCreado.estado = args.estado;
+        if (Object.keys(args).includes('State')) {
+            usuarioCreado.State = args.State;
         }
 
         return usuarioCreado;
         },
         editarUsuario: async (parent, args) => {
         const usuarioEditado = await UserModel.findByIdAndUpdate(args._id, {
-            nombre: args.nombre,
-            apellido: args.apellido,
-            identificacion: args.identificacion,
-            correo: args.correo,
-            rol: args.rol,
-            estado: args.estado,
+            Name: args.Name,
+            Lastname: args.Lastname,
+            Identification: args.Identification,
+            Email: args.Email,
+            Role: args.Role,
+            State: args.State,
         });
 
         return usuarioEditado;
@@ -44,8 +45,8 @@ const resolversUsuario = {
         if (Object.keys(args).includes('_id')) {
             const usuarioEliminado = await UserModel.findOneAndDelete({ _id: args._id });
             return usuarioEliminado;
-        } else if (Object.keys(args).includes('correo')) {
-            const usuarioEliminado = await UserModel.findOneAndDelete({ correo: args.correo });
+        } else if (Object.keys(args).includes('Email')) {
+            const usuarioEliminado = await UserModel.findOneAndDelete({ Email: args.Email });
             return usuarioEliminado;
         }
         },
