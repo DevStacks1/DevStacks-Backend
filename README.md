@@ -1,6 +1,7 @@
 # DevStacks-Backend
 
-until now, we can receive through apollo users register. 
+CURRENT NOTE: until now, we can receive through apollo users register.
+
 we got 3 principles folders:
 1. db : conects to mongo database usign moongose
 2. grapql : we store types and controllers that graphQL need to work.
