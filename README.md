@@ -1,6 +1,6 @@
 # DevStacks-Backend
 
-CURRENT NOTE: until now, we can receive through apollo users register.
+CURRENT NOTE: until now, we have controlers and types for Usuarios, Projectos, avances, objetives and enums.
 
 we got 3 main folders:
 1. db : conects to mongo database usign moongose
