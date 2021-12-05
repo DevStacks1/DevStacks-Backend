@@ -1,29 +1,52 @@
-import { ModeloAvance } from './avance.js';
+import { AdvanceModel } from './avance.js';
 
-const resolversAvance = {
+const Advances_Resolvers = {
     Query: {
-        Avances: async (parent, args) => {
-        const avances = await ModeloAvance.find().populate('proyecto').populate('creadoPor');
-        return avances;
+        Advances: async (parent, args) => {
+        const advances = await AdvanceModel.find().populate('project').populate('CreatedBy');
+        return advances;
         },
-        filtrarAvance: async (parents, args) => {
-        const avanceFiltrado = await ModeloAvance.find({ proyecto: args.idProyecto })
-            .populate('proyecto')
-            .populate('creadoPor');
-        return avanceFiltrado;
+        FilterAdvance: async (parents, args) => {
+        const AdvanceFiltered = await AdvanceModel.find({ project: args._id })
+            .populate('project')
+            .populate('CreatedBy');
+        return AdvanceFiltered;
         },
     },
     Mutation: {
-        crearAvance: async (parents, args) => {
-        const avanceCreado = ModeloAvance.create({
-            fecha: args.fecha,
-            descripcion: args.descripcion,
-            proyecto: args.proyecto,
-            creadoPor: args.creadoPor,
-        });
-        return avanceCreado;
+        CreateAdvance: async (parents, args) => {
+            const NewAdvance = AdvanceModel.create({
+                Date_Advance: args.Date_Advance,
+                Description: args.Description,
+                project: args.project,
+                CreatedBy: args.CreatedBy,
+            });
+            return NewAdvance;
+        },
+        CreateRemarks: async (parents, args) => {
+            const NewRemark = AdvanceModel.findByIdAndUpdate(
+                args.idAdvance,
+                {
+                    $addToSet: {
+                        Remarks: 
+                        {
+                            Comment: args.Comment,
+                        },
+                    },
+                },
+                { new: true }
+            );
+            return NewRemark;
+        },
+        UpdateDescription: async (parents, args) => {
+            const NewDescription = await AdvanceModel.findByIdAndUpdate(
+                args.idAdvance, 
+                {  Description: args.Description }, 
+                { new: true }
+            );
+            return NewDescription;
         },
     },
 };
 
-export { resolversAvance };
+export { Advances_Resolvers };

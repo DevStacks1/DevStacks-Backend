@@ -1,20 +1,37 @@
 import { gql } from 'apollo-server-express';
 
-const tiposAvance = gql`
-    type Avance {
+const Advance_Types = gql`
+    type Remark {
         _id: ID!
-        descripcion: String!
-        observaciones: [String]
-        proyecto: Proyecto!
-        creadoPor: Usuario!
+        Comment: String!
+    }
+    input CreateRemarks {
+        Comment: String!
+    }
+    type Advance {
+        _id: ID!
+        Date_Advance: Date!
+        Description: String!
+        Remarks: [Remark]
+        project: Project!
+        CreatedBy: User!
     }
     type Query {
-        Avances: [Avance]
-        filtrarAvance(idProyecto: String!): [Avance]
+        Advances: [Advance]
+        FilterAdvance(idProject: String!): [Advance]
     }
     type Mutation {
-        crearAvance(descripcion: String!, proyecto: String!, creadoPor: String!): Avance
+        CreateAdvance(
+            Date_Advance: Date!, 
+            Description: String!, 
+            Remarks: [CreateRemarks]
+            project: String!, 
+            CreatedBy: String!
+            ): Advance
+        
+        CreateRemarks(idAdvance: String!, Comment: String!): Advance
+        UpdateDescription(idAdvance: String!, Description: String!): Advance
     }
     `;
 
-export { tiposAvance };
+export { Advance_Types };

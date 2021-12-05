@@ -3,59 +3,48 @@ import { ObjectiveModel } from '../objective.js';
 import { UserModel } from '../usuario/usuario.js';
 const { Schema, model } = mongoose;
 
-// interface Proyecto {
-//   nombre: string;
-//   presupuesto: number;
-//   fechaInicio: Date;
-//   fechaFin: Date;
-//   estado: Enum_EstadoProyecto;
-//   fase: Enum_FaseProyecto;
-//   lider: Schema.Types.ObjectId;
-//   objetivos: [{ descripcion: String; tipo: Enum_TipoObjetivo }];
-// }
-
 const projectSchema = new Schema(
   {
-    nombre: {
+    NameProject: {
       type: String,
       required: true,
     },
-    presupuesto: {
+    Budget: {
       type: Number,
       required: true,
     },
-    fechaInicio: {
+    Initial_Date: {
       type: Date,
       required: true,
     },
-    fechaFin: {
+    Final_Date: {
       type: Date,
       required: true,
     },
-    estado: {
+    ProjectState: {
       type: String,
-      enum: ['ACTIVO', 'INACTIVO'],
-      default: 'INACTIVO',
+      enum: ['ACTIVE', 'INACTIVE'],
+      default: 'INACTIVE',
     },
-    fase: {
-      type: String,
-      enum: ['INICIADO', 'DESARROLLO', 'TERMINADO', 'NULO'],
-      default: 'NULO',
+    Phase: {
+        type: String,
+        enum: ['STARTED', 'DEVELOPMENT', 'FINISHED', 'NULL'],
+        default: 'NULL',
     },
-    lider: {
+    Leader: {
       type: Schema.Types.ObjectId,
       required: true,
       ref: UserModel,
     },
-    objetivos: [
+    Objectives: [
       {
-        descripcion: {
+        Description: {
           type: String,
           required: true,
         },
-        tipo: {
+        Type: {
           type: String,
-          enum: ['GENERAL', 'ESPECIFICO'],
+          enum: ['GENERAL', 'SPECIFIC'],
           required: true,
         },
       },
@@ -67,18 +56,18 @@ const projectSchema = new Schema(
   }
 );
 
-projectSchema.virtual('avances', {
-  ref: 'Avance',
+projectSchema.virtual('advances', {
+  ref: 'Advance',
   localField: '_id',
-  foreignField: 'proyecto',
+  foreignField: 'project',
 });
 
-projectSchema.virtual('inscripciones', {
-  ref: 'Inscripcion',
+projectSchema.virtual('inscriptions', {
+  ref: 'Inscription',
   localField: '_id',
-  foreignField: 'proyecto',
+  foreignField: 'project',
 });
 
-const ProjectModel = model('Proyecto', projectSchema);
+const ProjectModel = model('Project', projectSchema);
 
 export { ProjectModel };

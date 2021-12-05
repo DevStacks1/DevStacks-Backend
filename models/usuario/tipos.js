@@ -1,41 +1,51 @@
 import { gql } from 'apollo-server-express';
 
-const tiposUsuario = gql`
-    type Usuario {
+const Types_Users = gql`
+    type User {
         _id: ID!
         Name: String!
         Lastname: String!
         Identification: String!
+        Password: String!
         Email: String!
-        Role: Enum_Rol!
-        State: Enum_EstadoUsuario
+        Role: Enum_Role!
+        State: Enum_UserState
     }
     type Query {
-        Usuarios: [Usuario]
-        Usuario(_id: String!): Usuario
+        Users: [User]
+        User(_id: String!): User
     }
     type Mutation {
-        crearUsuario(
+        CreateUser(
         Name: String!
         Lastname: String!
-        Identification: String!
         Email: String!
-        Role: Enum_Rol!
-        State: Enum_EstadoUsuario
-        ): Usuario,
+        Identification: String!
+        Password: String!
+        Role: Enum_Role!
+        ): User,
 
-        editarUsuario(
+        Login(
+            Email: String!
+            Password: String!
+        ): User,
+
+        UpdateUser(
         _id: String!
         Name: String!
         Lastname: String!
-        Identification: String!
         Email: String!
-        Role: Enum_Rol!
-        State: Enum_EstadoUsuario
-        ): Usuario,
+        Identification: String!
+        Password: String!
+        Role: Enum_Role!
+        ): User,
 
-        eliminarUsuario(_id: String, Email: String): Usuario
+        UpdateState(
+        State: Enum_UserState!
+        ): User,
+        
+        DeleteUser(_id: String, Email: String): User
     }
     `;
 
-export { tiposUsuario };
+export { Types_Users };
