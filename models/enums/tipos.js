@@ -8,8 +8,8 @@ const tiposEnums = gql`
   }
 
   enum Enum_Rol {
-    STUDENT
-    LEADER
+    STUDENT,
+    LEADER,
     ADMINISTRATOR
   }
 

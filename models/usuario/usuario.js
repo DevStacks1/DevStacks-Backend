@@ -46,7 +46,7 @@ const userSchema = new Schema({
   Role: {
     type: String,
     required: true,
-    enum: ['ESTUDIANTE', 'LIDER', 'ADMINISTRADOR'],
+    enum: ['STUDENT', 'LEADER', 'ADMINISTRATOR'],
   },
   State: {
     type: String,
