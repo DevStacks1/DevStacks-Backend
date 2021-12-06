@@ -1,40 +1,39 @@
 import { gql } from 'apollo-server-express';
 
-const tiposEnums = gql`
-  enum Enum_EstadoUsuario {
+const Enums_Types = gql`
+  enum Enum_UserState {
     PENDING
     AUTHORIZED
-    NO_AUTHORIZED
+    UNAUTHORIZED
   }
 
-  enum Enum_Rol {
-    STUDENT,
-    LEADER,
+  enum Enum_Role {
+    STUDENT
+    LEADER
     ADMINISTRATOR
   }
 
-  enum Enum_EstadoProyecto {
+  enum Enum_ProjectState {
     ACTIVE
     INACTIVE
   }
 
-  enum Enum_FaseProyecto {
-    INICIADO
-    DESARROLLO
-    TERMINADO
-    NULO
+  enum Enum_ProjectPhase {
+    STARTED
+    DEVELOPMENT
+    FINISHED
+    NULL
   }
 
-  enum Enum_TipoObjetivo {
+  enum Enum_ObjectiveType {
     GENERAL
-    ESPECIFICO
+    SPECIFIC
   }
 
-  enum Enum_EstadoInscripcion {
-    ACEPTADO
-    RECHAZADO
-    PENDIENTE
+  enum Enum_InscriptionState {
+    ACCEPTED
+    REJECTED
   }
 `;
 
-export { tiposEnums };
+export { Enums_Types };

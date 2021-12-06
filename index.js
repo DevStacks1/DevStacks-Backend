@@ -6,7 +6,7 @@ import conectarBD from './db/db.js';
 import { tipos } from './graphql/types.js';
 import { resolvers } from './graphql/resolvers.js';
 
-// aqui conectamos con apollo e iniciamos la app 
+// aqui conectamos con apollo e iniciamos la app
 dotenv.config();
 
 const server = new ApolloServer({
@@ -17,7 +17,7 @@ const server = new ApolloServer({
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.listen({ port: process.env.PORT || 4000 }, async () => {
+app.listen(4000, async () => {
   await conectarBD();
   await server.start();
 

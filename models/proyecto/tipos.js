@@ -1,42 +1,56 @@
 import { gql } from 'apollo-server-express';
 
-const tiposProyecto = gql`
-    type Objetivo {
+const ProjectTypes = gql`
+    type Objective {
         _id: ID!
-        descripcion: String!
-        tipo: Enum_TipoObjetivo!
+        Description: String!
+        Type: Enum_ObjectiveType!
     }
-    input crearObjetivo {
-        descripcion: String!
-        tipo: Enum_TipoObjetivo!
+    input CreateObjective {
+        Description: String!
+        Type: Enum_ObjectiveType!
     }
-    type Proyecto {
+    type Project {
         _id: ID!
-        nombre: String!
-        presupuesto: Float!
-        fechaInicio: Date!
-        fechaFin: Date!
-        estado: Enum_EstadoProyecto!
-        fase: Enum_FaseProyecto!
-        lider: Usuario!
-        objetivos: [Objetivo]
-        avances: [Avance]
+        NameProject: String!
+        Budget: Float!
+        Initial_Date: Date!
+        Final_Date: Date!
+        ProjectState: Enum_ProjectState!
+        Phase: Enum_ProjectPhase!
+        Leader: User!
+        Objectives: [Objective]
+        Advances: [Advance]
     }
     type Query {
-        Proyectos: [Proyecto]
+        Projects: [Project]
     }
     type Mutation {
-        crearProyecto(
-        nombre: String!
-        presupuesto: Float!
-        fechaInicio: Date!
-        fechaFin: Date!
-        estado: Enum_EstadoProyecto!
-        fase: Enum_FaseProyecto!
-        lider: String!
-        objetivos: [crearObjetivo]
-        ): Proyecto
+        CreateProject(
+        NameProject: String!
+        Budget: Float!
+        Initial_Date: Date!
+        Final_Date: Date!
+        ProjectState: Enum_ProjectState
+        Phase: Enum_ProjectPhase
+        Leader: String!
+        Objectives: [CreateObjective]
+        ): Project,
+
+        UpdateProjectState(
+        idProject: String!
+        ProjectState: Enum_ProjectState!
+        ): Project,
+
+        UpdatePhase(
+        idProject: String!
+        Phase: Enum_ProjectPhase!
+        ): Project,
+        
+        UpdateProject(idProject: String!, NameProject: String!, Objectives: [CreateObjective], Budget: Float!): Project
+        CreateObjective(idProject: String!, Description: String!, Type: Enum_ObjectiveType!): Project
+        DeleteObjective(idProject: String!, idObjective: String!): Project
     }
 `;
 
-export { tiposProyecto };
+export { ProjectTypes };
