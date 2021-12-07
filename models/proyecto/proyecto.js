@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { ObjectiveModel } from '../objective.js';
 import { UserModel } from '../usuario/usuario.js';
 const { Schema, model } = mongoose;
 
@@ -65,7 +64,7 @@ projectSchema.virtual('advances', {
 projectSchema.virtual('inscriptions', {
   ref: 'Inscription',
   localField: '_id',
-  foreignField: 'project',
+  foreignField: 'Name_project',
 });
 
 const ProjectModel = model('Project', projectSchema);

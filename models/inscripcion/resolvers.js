@@ -1,5 +1,3 @@
-import { ProjectModel } from '../proyecto/proyecto.js';
-import { UserModel } from '../usuario/usuario.js';
 import { InscriptionModel } from './inscripcion.js';
 
 const Inscriptions_Resolvers = {
