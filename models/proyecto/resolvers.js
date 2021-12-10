@@ -14,7 +14,6 @@ const Resolvers_Projects = {
             const Inscriptions = await InscriptionModel.find ({
                 Name_project: parent._id,
             });
-            console.log("parent", InscriptionModel.Name_project);
             return Inscriptions;
         },
     },
