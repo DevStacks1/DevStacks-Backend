@@ -6,7 +6,6 @@ const Users_Controllers = {
     Query: {
         Users: async (parent, args) => {
             const users = await UserModel.find();
-            console.log("You are seeing all the users");
             return users;
         },
         User: async (parent, args) => {
@@ -20,7 +19,7 @@ const Users_Controllers = {
                 Name: args.Name,
                 Lastname: args.Lastname,
                 Identification: args.Identification,
-                Password: bcrypt.hashSync(args.Password, 10),
+                Password: args.Password,
                 Email: args.Email,
                 Role: args.Role,
             });
@@ -45,9 +44,8 @@ const Users_Controllers = {
                     Name: args.Name,
                     Lastname: args.Lastname,
                     Identification: args.Identification,
-                    Password: args.Password,
                     Email: args.Email,
-                    Role: args.Role,
+                    State: args.State,
                 },
                 { new: true }
             );
