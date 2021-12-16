@@ -6,13 +6,13 @@ const Resolvers_Projects = {
     Project: {
         Leader: async (parent, args, context) => {
             const user = await UserModel.findOne({
-                _id: parent.Leader.toString(),
+                _id: parent.Leader.toString()
             });
             return user;
         },
         Inscriptions: async (parent, args, context) => {
             const Inscriptions = await InscriptionModel.find ({
-                Name_project: parent._id,
+                Project: parent._id,
             });
             return Inscriptions;
         },
@@ -41,10 +41,7 @@ const Resolvers_Projects = {
         UpdateProject: async (parent, args) => {
             const UpdatedProject = await ProjectModel.findByIdAndUpdate(
                 args.idProject,
-                {   NameProject: args.NameProject,
-                    Objectives: args.Objectives,
-                    Budget: args.Budget
-                },
+                args.Fields,
                 { new: true }
             );
             return UpdatedProject;

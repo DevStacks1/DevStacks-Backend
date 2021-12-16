@@ -3,7 +3,7 @@ import { InscriptionModel } from './inscripcion.js';
 const Inscriptions_Resolvers = {
     Query: {
         Inscriptions: async (parent, args) => {
-            const inscriptions = await InscriptionModel.find().populate('Name_project').populate('Student');
+            const inscriptions = await InscriptionModel.find().populate('Project').populate('Student');
             return inscriptions;
         },
     },
@@ -11,7 +11,7 @@ const Inscriptions_Resolvers = {
         CreateInscription: async (parent, args) => {
             const NewInscription = await InscriptionModel.create({
                 Inscription_State: args.Inscription_State,
-                Name_project: args.Name_project,
+                Project: args.Project,
                 Student: args.Student,
             });
             return NewInscription;
