@@ -4,6 +4,11 @@ const { Schema, model } = mongoose;
 
 const projectSchema = new Schema(
   {
+    Identificator: {
+      type: String,
+      required: true,
+    },
+    
     NameProject: {
       type: String,
       required: true,

@@ -12,6 +12,7 @@ const ProjectTypes = gql`
     }
     type Project {
         _id: ID!
+        Identificator: String!
         NameProject: String!
         Budget: Float!
         Initial_Date: Date!
@@ -28,6 +29,7 @@ const ProjectTypes = gql`
     }
     type Mutation {
         CreateProject(
+        Identificator: String!
         NameProject: String!
         Budget: Float!
         Initial_Date: Date!
