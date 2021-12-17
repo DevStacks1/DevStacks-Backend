@@ -1,6 +1,7 @@
 import { gql } from 'apollo-server-express';
 
 const Avance_Types = gql`
+    
     type Avance {
         _id: ID!
         Date: Date!
@@ -15,7 +16,7 @@ const Avance_Types = gql`
     }
     type Mutation {
         crearAvance(Date: Date!, Observations: String!, Project: String!, CreatedBy: String!): Avance
-        addObservation (Observation: String!): Avance
+        crearObservation (_id: String!, Observations: String!): Avance
     }
 `;
 

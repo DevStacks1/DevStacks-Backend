@@ -1,9 +1,12 @@
+import { printSourceLocation } from 'graphql';
 import { ModeloAvance } from './avance.js';
 
 const Avance_Resolvers = {
     Query: {
         Avances: async (parent, args) => {
-        const avances = await ModeloAvance.find().populate('Project').populate('CreatedBy');
+        const avances = await ModeloAvance.find()
+        .populate('Project')
+        .populate('CreatedBy');
         return avances;
         },
         filtrarAvance: async (parents, args) => {
@@ -23,7 +26,13 @@ const Avance_Resolvers = {
         });
         return avanceCreado;
         },
-    },
+        crearObservation : async (parents, args) => {
+            const observation = await ModeloAvance.findByIdAndUpdate(args._id, {
+                Observations: args.Observations
+            }, {new:true})
+            return observation
+        }
+    }
 };
 
 export { Avance_Resolvers }
