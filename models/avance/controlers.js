@@ -26,7 +26,7 @@ const Avance_Resolvers = {
         });
         return avanceCreado;
         },
-        crearObservation : async (parents, args) => {
+        editarObservation : async (parents, args) => {
             const observation = await ModeloAvance.findByIdAndUpdate(args._id, {
                 Observations: args.Observations
             }, {new:true})
