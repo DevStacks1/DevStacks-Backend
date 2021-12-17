@@ -5,7 +5,6 @@ const Avance_Types = gql`
         _id: ID!
         Date: Date!
         Description: String!
-        Observations: [String]
         Project: Project!
         CreatedBy: User!
     }
