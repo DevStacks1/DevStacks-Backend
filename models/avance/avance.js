@@ -17,7 +17,7 @@ const avanceSchema = new Schema({
         type: Date,
         required: true,
     },
-    Description: {
+    Observations: {
         type: String,
         required: true,
     },
