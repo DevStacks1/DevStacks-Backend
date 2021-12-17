@@ -26,7 +26,6 @@ const Resolvers_Projects = {
     Mutation: {
         CreateProject: async (parent, args) => {
             const NewProject = await ProjectModel.create({
-                Identificator: args.Identificator,
                 NameProject: args.NameProject,
                 Budget: args.Budget,
                 Initial_Date: args.Initial_Date,
