@@ -18,6 +18,7 @@ const ProjectTypes = gql`
         ProjectState: Enum_ProjectState
         Phase: Enum_ProjectPhase
         Leader: String
+        Objectives: [Objective]
     }
     type Project {
         _id: ID!
