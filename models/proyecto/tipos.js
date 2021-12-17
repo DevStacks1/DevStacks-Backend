@@ -11,6 +11,7 @@ const ProjectTypes = gql`
         Type: Enum_ObjectiveType!
     }
     input ProjectFields {
+        Identificator: String
         NameProject: String
         Budget: Float
         Initial_Date: Date
