@@ -20,7 +20,7 @@ const Inscriptions_Resolvers = {
             const InscriptionOk = await InscriptionModel.findByIdAndUpdate(
                 args.id,
                 {
-                    Inscription_State: args.value ? ('ACCEPTED'):('REJECTED'),
+                    Inscription_State: args.value,
                     Income_Date: Date.now(),
                 },
                 { new: true }

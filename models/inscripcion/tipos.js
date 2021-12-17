@@ -16,7 +16,7 @@ const Inscription_Types = gql`
       Student: String!
     ): Inscription
     
-    ResponseInscription(id: String!, value: Boolean!): Inscription
+    ResponseInscription(id: String!, value: String!): Inscription
   }
 `;
 
