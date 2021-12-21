@@ -5,7 +5,6 @@ const Types_Users = gql`
                 Name: String
                 Lastname: String
                 Identification: String
-                Photo : String
         }
         type User {
                 _id: ID!
