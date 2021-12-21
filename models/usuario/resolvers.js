@@ -70,7 +70,7 @@ const Users_Controllers = {
             }
         },
         editProfile: async (parent, args) => {
-            UserToEdit = await UserModel.findByIdAndUpdate(args._id, args.Fields)
+            const UserToEdit = await UserModel.findByIdAndUpdate(args._id, args.Fields)
             return UserToEdit;
         }
     },
